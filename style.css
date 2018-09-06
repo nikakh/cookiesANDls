@@ -1,0 +1,28 @@
+*{
+	box-sizing: border-box;
+}
+
+.container{
+	margin: auto;
+}
+
+ul li{
+	position: relative;
+	cursor: pointer;
+	background: #ddd;
+	padding: 14px;
+	list-style: none;
+}
+
+ul li:nth-child(even){
+	background: white;
+}
+
+ul li:hover {
+ background: #ddd;
+}
+
+
+.box{
+	text-decoration: line-through; 
+}

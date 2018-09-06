@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ToDo list</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.min.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="todoList">
+	<div class="container">
+		<div class="header">
+			<h2>You have <span>{{ totalToDos() }}</span> items in the list</h2>
+		</div>
+		<ul class="itemList">
+			<li ng-repeat="todo in todos track by $index">
+				<input type="checkbox" ng-model="todo.done" class="box">
+				<span ng-class='{ box: todo.done}'>{{ todo.text }}</span>
+
+				
+			</li>
+
+
+		</ul>
+		<input type="text" placeholder="Add item..." class="textInput" ng-model="newToDo" />
+		<button ng-click="addToDo(newToDo)" ng-click="addCookie(newToDo)">add and save with cookies</button>
+		
+		<button ng-click="addToDoLS(newToDo)">add with localStorage</button>
+		<button ng-click="load(newToDo)">load</button>
+		
+	</div>
+	
+</body>
+</html>
