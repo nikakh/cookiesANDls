@@ -6,6 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.min.js"></script>
+	
 	<script type="text/javascript" src="/js/app.js"></script>
 </head>
 <body ng-app="myApp" ng-controller="todoList">
@@ -15,8 +16,12 @@
 		</div>
 		<ul class="itemList">
 			<li ng-repeat="todo in todos track by $index">
-				<input type="checkbox" ng-model="todo.done" class="box">
-				<span ng-class='{ box: todo.done}'>{{ todo.text }}</span>
+				<input type="checkbox" ng-model="todo.done"  class="box" ng-change="changed()">
+				<span contenteditable="false" ng-dblclick="contentEdit(todo.text)" ng-keydown="enterAgain(todo.text)"  
+				class="done-{{todo.done}}" ng-class='{ box: todo.done}' 
+				ng-model="todo.text">{{ todo.text }}</span>
+				<button class="btn" ng-click="deleteSelected()">delete</button>
+				
 
 				
 			</li>
@@ -24,10 +29,10 @@
 
 		</ul>
 		<input type="text" placeholder="Add item..." class="textInput" ng-model="newToDo" />
-		<button ng-click="addToDo(newToDo)" ng-click="addCookie(newToDo)">add and save with cookies</button>
+		<button ng-click="addToDo(newToDo)">add and save with cookies</button>
 		
 		<button ng-click="addToDoLS(newToDo)">add with localStorage</button>
-		<button ng-click="load(newToDo)">load</button>
+		
 		
 	</div>
 	
